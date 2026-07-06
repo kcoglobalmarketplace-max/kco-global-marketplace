@@ -1,0 +1,47 @@
+[
+  {
+    "id": "KCO-AGR-001",
+    "category": "Agriculture",
+    "sub_category": "Irrigation",
+    "name": "K.C.O Smart-Flow Irrigation Controller",
+    "brand": "K.C.O Agro",
+    "model": "Aqua-Sense-2026",
+    "year": 2026,
+    "price": 550,
+    "currency": "USD",
+    "description": "Cloud-connected irrigation controller that optimizes water usage based on hyper-local weather data.",
+    "availability": "In Stock",
+    "stock_quantity": 80,
+    "specifications": { "connectivity": "5G/LoRaWAN", "zones": 16 }
+  },
+  {
+    "id": "KCO-PET-001",
+    "category": "Pets",
+    "sub_category": "Feeding",
+    "name": "K.C.O Automated Pet Nutrition Station",
+    "brand": "K.C.O PetCare",
+    "model": "PetFeeder-Pro",
+    "year": 2026,
+    "price": 220,
+    "currency": "USD",
+    "description": "App-controlled feeder with portion control and a built-in high-definition camera for pet monitoring.",
+    "availability": "In Stock",
+    "stock_quantity": 250,
+    "specifications": { "capacity": "5 Liters", "power": "Battery/USB" }
+  },
+  {
+    "id": "KCO-AGR-002",
+    "category": "Agriculture",
+    "sub_category": "Tools",
+    "name": "Heavy-Duty Industrial Cultivator",
+    "brand": "K.C.O Agro",
+    "model": "Field-Master-X",
+    "year": 2026,
+    "price": 3200,
+    "currency": "USD",
+    "description": "Rugged, steel-frame cultivator designed for high-efficiency soil preparation in large-scale fields.",
+    "availability": "In Stock",
+    "stock_quantity": 20,
+    "specifications": { "construction": "Reinforced Carbon Steel", "application": "Large Scale" }
+  }
+]

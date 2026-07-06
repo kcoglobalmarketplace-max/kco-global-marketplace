@@ -1,0 +1,47 @@
+[
+  {
+    "id": "KCO-FSH-001",
+    "category": "Fashion",
+    "sub_category": "Men",
+    "name": "K.C.O Signature Tactical Jacket",
+    "brand": "K.C.O Apparel",
+    "model": "Tactical-V1",
+    "year": 2026,
+    "price": 250,
+    "currency": "USD",
+    "description": "High-durability wind-resistant fabric with signature orange K.C.O contrast stitching.",
+    "availability": "In Stock",
+    "stock_quantity": 200,
+    "specifications": { "material": "Ripstop Nylon", "fit": "Modern Athletic" }
+  },
+  {
+    "id": "KCO-JWL-001",
+    "category": "Jewelry",
+    "sub_category": "Luxury Watches",
+    "name": "K.C.O Chronograph Horizon",
+    "brand": "K.C.O Timepieces",
+    "model": "Chronos-01",
+    "year": 2026,
+    "price": 1200,
+    "currency": "USD",
+    "description": "Precision-engineered timepiece with sapphire crystal face and orange dial accents.",
+    "availability": "In Stock",
+    "stock_quantity": 50,
+    "specifications": { "movement": "Automatic", "water_resistance": "100m" }
+  },
+  {
+    "id": "KCO-BTY-001",
+    "category": "Beauty",
+    "sub_category": "Skincare",
+    "name": "K.C.O Revitalizing Serum",
+    "brand": "K.C.O Beauty",
+    "model": "Glow-X",
+    "year": 2026,
+    "price": 85,
+    "currency": "USD",
+    "description": "Premium revitalizing serum enriched with essential vitamins for skin health.",
+    "availability": "In Stock",
+    "stock_quantity": 300,
+    "specifications": { "volume": "50ml", "type": "Anti-Aging" }
+  }
+]
