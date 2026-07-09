@@ -1,0 +1,71 @@
+/**
+ * K.C.O. Global Marketplace - Structural Graphics & Effects
+ * Location: assets/css/style.css
+ */
+
+/* Custom Clean Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f97316;
+}
+
+/* Micro-Cement Architectural Background Grid Pattern */
+.bg-[#0b0f19] {
+    background-color: #050811;
+    background-image: 
+        linear-gradient(rgba(249, 115, 22, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 115, 22, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center top;
+}
+
+/* Endless Perspective Transition Shaders */
+.min-h-\\[220px\\] {
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Glowing Aura behind Infinite Showroom Matrices */
+.min-h-\\[220px\\]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(249, 115, 22, 0.06), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.min-h-\\[220px\\]:hover::before {
+    opacity: 1;
+}
+
+.min-h-\\[220px\\]:hover {
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px 1px rgba(249, 115, 22, 0.05);
+}
+
+/* Active Glow status for continuous matrix indexing */
+@keyframes pulse-slow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.92); }
+}
+
+.animate-pulse {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

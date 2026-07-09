@@ -1,0 +1,110 @@
+/**
+ * K.C.O. Marketplace - Premium Customer Checkout Style Sheet
+ * Location: css/checkout-system.css
+ */
+
+.checkout-grid-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+@media(max-width: 900px) {
+    .checkout-grid-container { grid-template-columns: 1fr; }
+}
+
+.checkout-card-section {
+    background: var(--kco-card);
+    border: 1px solid var(--kco-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.checkout-card-section h3 {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkout-card-section h3 i {
+    color: var(--kco-orange);
+}
+
+.shipping-method-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--kco-black);
+    border: 1px solid var(--kco-border);
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.shipping-method-option:hover, .shipping-method-option.selected {
+    border-color: var(--kco-orange);
+    background: rgba(249, 115, 22, 0.02);
+}
+
+.payment-method-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.payment-pill {
+    background: var(--kco-black);
+    border: 1px solid var(--kco-border);
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.payment-pill.active {
+    background: var(--kco-orange);
+    color: white;
+    border-color: var(--kco-orange);
+}
+
+.manual-payment-instructions {
+    background: rgba(5, 7, 12, 0.6);
+    border: 1px solid var(--kco-border);
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--kco-muted);
+}
+
+.summary-row.total {
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    border-top: 1px solid var(--kco-border);
+    padding-top: 12px;
+    margin-top: 12px;
+}
