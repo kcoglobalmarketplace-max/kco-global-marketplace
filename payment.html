@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>K.C.O. Platform - Detail Pipeline Presentation Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#03060b] text-white font-mono antialiased p-6">
+    <main class="max-w-6xl mx-auto">
+        <a href="index.html" class="inline-block text-xs text-orange-500 hover:underline mb-6"><-- REVERT TO SYSTEM CENTRUM HUB</a>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <div id="p-gallery-viewport" class="w-full h-96 bg-[#060a12] border border-gray-900 rounded-2xl overflow-hidden cursor-zoom-in relative">
+                    </div>
+                
+                <div id="p-gallery-filmstrip" class="flex gap-2 mt-4 overflow-x-auto pb-2">
+                    </div>
+
+                <div class="mt-4 bg-[#060a12] border border-gray-900 p-4 rounded-xl">
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-2">360° SPATIAL ORIENTATION MATRIX CONTROLLER</label>
+                    <input type="range" id="p-360-slider" min="0" max="3" value="0" class="w-full accent-orange-500 bg-gray-900 h-1 rounded-lg appearance-none cursor-pointer">
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-between">
+                <div>
+                    <span id="p-detail-brand-year" class="text-xs text-orange-500 tracking-wider block font-bold">---</span>
+                    <h1 id="p-detail-title" class="text-xl font-bold text-white uppercase tracking-wider mt-1">Asset Node Resolution</h1>
+                    
+                    <div class="flex gap-4 text-[10px] text-gray-500 mt-2 border-b border-gray-900 pb-4">
+                        <div>REF SKU: <span id="p-detail-sku" class="text-white font-bold">---</span></div>
+                        <div>COND: <span id="p-detail-condition" class="text-emerald-400 font-bold">---</span></div>
+                        <div>ALLOCATION: <span id="p-detail-stock-level" class="text-orange-500 font-bold">---</span></div>
+                    </div>
+
+                    <p id="p-detail-description" class="text-xs text-gray-400 mt-4 leading-relaxed">---</p>
+
+                    <div class="mt-6 bg-[#060a12] p-4 border border-gray-900 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <span class="block text-[9px] text-gray-500 font-bold">SETTLEMENT VALUE</span>
+                            <span id="p-detail-price" class="text-xl font-bold text-orange-500">---</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button id="btn-toggle-wishlist" class="bg-gray-900 border border-gray-800 hover:border-orange-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors">WISHLIST</button>
+                            <button id="btn-add-cart" class="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2 rounded-xl text-xs font-bold transition-colors">BUY NOW / CART</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-900 pt-8">
+            <div>
+                <h3 class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-4">// TECHNICAL SPECIFICATION SHEET MATRIX</h3>
+                <div id="p-specs-table" class="bg-[#050810] border border-gray-900 rounded-xl p-4">
+                    </div>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-4">// RELATED RECOMMENDATION CLUSTERS</h3>
+                <div id="p-detail-recommendation-target" class="grid grid-cols-2 gap-4">
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="database/mock-db-core.js"></script>
+    <script src="database/image-library.js"></script>
+    <script src="database/product-loader.js"></script>
+    <script src="js/currency-engine.js"></script>
+    <script src="js/image-loader-engine.js"></script>
+    <script src="js/recommendation-engine.js"></script>
+    <script src="js/notification-center.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/product-engine.js"></script>
+</body>
+</html>
