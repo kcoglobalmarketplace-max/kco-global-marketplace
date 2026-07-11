@@ -1,0 +1,68 @@
+{
+  "1": {
+    "id": 1,
+    "sku": "KCO-ELEC-001",
+    "name": "K.C.O. Elite Wireless Headset",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "priceUSD": 199.99,
+    "stockCount": 45,
+    "stockStatus": "In Stock",
+    "badge": "Best Seller",
+    "location": "Lagos, Nigeria",
+    "year": 2026,
+    "gallery": [
+      "assets/images/products/electronics/headset-main.webp",
+      "assets/images/products/electronics/headset-side.webp"
+    ],
+    "threeSixtyFrames": [],
+    "videoUrl": "https://www.youtube.com/embed/example1",
+    "specs": {
+      "Weight": "250g",
+      "Battery": "30 hours",
+      "Connectivity": "Bluetooth 5.3"
+    },
+    "desc": "Premium wireless headset with active noise cancellation and ergonomic fit.",
+    "merchantName": "K.C.O. Tech Official",
+    "merchantRating": 4.8,
+    "shipping": "Free International Shipping",
+    "warranty": "2-Year Manufacturer Warranty",
+    "reviews": [
+      { 
+        "client": "Adebayo S.", 
+        "score": 5, 
+        "text": "Excellent sound quality." 
+      }
+    ]
+  },
+  "2": {
+    "id": 2,
+    "sku": "KCO-FASH-002",
+    "name": "K.C.O. Chrono Smartwatch v5",
+    "category": "Fashion",
+    "subCategory": "Accessories",
+    "priceUSD": 299.00,
+    "stockCount": 12,
+    "stockStatus": "Low Stock",
+    "badge": "New Arrival",
+    "location": "Lagos, Nigeria",
+    "year": 2026,
+    "gallery": [
+      "assets/images/products/fashion/watch-front.webp",
+      "assets/images/products/fashion/watch-detail.webp"
+    ],
+    "threeSixtyFrames": [],
+    "videoUrl": "https://www.youtube.com/embed/example2",
+    "specs": {
+      "WaterResistance": "5ATM",
+      "Display": "AMOLED",
+      "Material": "Titanium"
+    },
+    "desc": "Next-generation smartwatch featuring advanced biometrics and seamless integration.",
+    "merchantName": "K.C.O. Fashion House",
+    "merchantRating": 4.9,
+    "shipping": "Standard Shipping",
+    "warranty": "1-Year Limited Warranty",
+    "reviews": []
+  }
+}
