@@ -1,0 +1,134 @@
+<!-- K.C.O. Global Marketplace - Payment Selection Block -->
+<div class="payment-selection-container">
+    <h2>💳 Select Payment Method</h2>
+    <p class="section-subtitle">Choose your preferred payment method below.</p>
+    <hr class="section-divider" />
+
+    <form id="kco-payment-form">
+        <!-- 1. Manual Bank Transfer (Available) -->
+        <div class="payment-method-card active-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="bank-transfer" checked>
+                <span class="method-title">✅ Manual Bank Transfer (Available)</span>
+            </label>
+            <div class="method-description">
+                <p>Manual Bank Transfer is currently available and ready to use. Complete your bank transfer using the account details provided below, then upload your payment receipt. Once your payment has been verified, we will process your order and prepare your goods for shipping.</p>
+            </div>
+            
+            <!-- Dynamic Injection Container for Local Bank Routing Sheets -->
+            <div id="bank-transfer-details" class="method-expanded-panel"></div>
+        </div>
+
+        <!-- 2. Stripe -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="stripe" disabled>
+                <span class="method-title">❌ Credit/Debit Card (Stripe)</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 3. PayPal -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="paypal" disabled>
+                <span class="method-title">❌ PayPal</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 4. Apple Pay -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="apple-pay" disabled>
+                <span class="method-title">❌ Apple Pay</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 5. Google Pay -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="google-pay" disabled>
+                <span class="method-title">❌ Google Pay</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 6. Paystack -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="paystack" disabled>
+                <span class="method-title">❌ Paystack</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 7. Flutterwave -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="flutterwave" disabled>
+                <span class="method-title">❌ Flutterwave</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Currently unavailable. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+
+        <!-- 8. Cryptocurrency -->
+        <div class="payment-method-card disabled-method">
+            <label class="radio-label">
+                <input type="radio" name="payment-method" value="crypto" disabled>
+                <span class="method-title">❌ Cryptocurrency</span>
+            </label>
+            <div class="method-description disabled-text">
+                <p>Coming soon. Please use Manual Bank Transfer to complete your order so we can verify your payment and ship your goods.</p>
+            </div>
+        </div>
+    </form>
+
+    <!-- 📦 Shipping Notice Callout Info Block -->
+    <div class="shipping-notice-box">
+        <h4>📦 Shipping Notice</h4>
+        <p>Your order will not be shipped until your payment has been verified.</p>
+        <p class="notice-steps-title">After completing your bank transfer:</p>
+        <ol class="notice-steps-list">
+            <li>Click <strong>I Have Made the Payment</strong>.</li>
+            <li>Upload your payment receipt (Image or PDF).</li>
+            <li>Submit your receipt for verification.</li>
+        </ol>
+        <p class="notice-footer-text">Our finance team will review your payment. Once it has been successfully verified, your order status will change to <strong>Payment Verified</strong>, and your goods will be prepared for shipping. You will receive an update when your order has been processed and dispatched.</p>
+    </div>
+
+    <!-- STEP 1 ACTION: Confirm Transfer Made -->
+    <div class="checkout-actions-wrapper" id="step-1-actions">
+        <button id="btn-confirm-transfer" class="btn-primary-action">I Have Made the Payment</button>
+    </div>
+
+    <!-- STEP 2 WORKFLOW: Receipt Upload Dropzone Panel -->
+    <div id="receipt-upload-workflow" class="receipt-workflow-panel" style="display: none; margin-top: 25px;">
+        <div class="upload-controls">
+            <label for="payment-receipt-file" class="file-upload-dropzone">
+                <span class="upload-icon">📁</span>
+                <span class="upload-text">Click to choose or drop your receipt (Image or PDF)</span>
+                <input type="file" id="payment-receipt-file" accept="image/*,application/pdf" required>
+            </label>
+            <div id="file-name-preview" class="file-preview-text"></div>
+        </div>
+
+        <!-- STEP 2 ACTION: Final Submission -->
+        <div class="checkout-actions-wrapper" style="margin-top: 20px;">
+            <button id="btn-submit-receipt" class="btn-success-action">Submit Receipt</button>
+        </div>
+    </div>
+</div>
