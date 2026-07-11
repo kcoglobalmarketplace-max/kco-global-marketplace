@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#040710] text-[#f3f4f6]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K.C.O. Global Marketplace — Enterprise Asset Terminal</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    @layer utilities {
+      .glass-card {
+        background: rgba(11, 15, 25, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      .skeleton-shimmer {
+        background: linear-gradient(90deg, #090d16 25%, #151d30 50%, #090d16 75%);
+        background-size: 200% 100%;
+        animation: shimmerAnimation 1.8s infinite linear;
+      }
+    }
+    @keyframes shimmerAnimation {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-orange-500 selection:text-black font-sans">
+
+  <header class="border-b border-gray-900 bg-[#070b14]/80 backdrop-blur-md sticky top-0 z-40 w-full transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white font-black tracking-widest uppercase text-xs" aria-label="K.C.O. Global Marketplace Home">
+        <i data-lucide="globe" class="w-4 h-4 text-orange-500 animate-spin-slow"></i>
+        <span>K.C.O. <span class="text-orange-500">Global</span> <span class="text-[9px] font-mono font-light text-gray-500">Market</span></span>
+      </a>
+      
+      <div class="flex items-center gap-4">
+        <button onclick="executeShareProductPipeline()" class="p-2 border border-gray-900 rounded-lg hover:border-orange-500/30 text-gray-400 hover:text-orange-500 transition-all flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider bg-gray-950/40" aria-label="Share current asset deployment pipeline">
+          <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Share Asset</span>
+        </button>
+        <a href="index.html" class="border border-orange-500/20 hover:border-orange-500/80 px-3 py-1.5 rounded-lg transition-all text-orange-500 uppercase tracking-widest text-[10px] font-mono bg-orange-500/5">
+          Terminal Hub
+        </a>
+      </div>
+    </div>
+    <div class="w-full h-[2px] bg-gray-950 relative overflow-hidden">
+      <div id="image-loading-progress" class="absolute top-0 left-0 h-full bg-gradient-to-r from-orange-600 to-orange-400 opacity-0 transition-all duration-300 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 space-y-8">
+    
+    <nav id="product-breadcrumbs" class="text-[10px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2 flex-wrap" aria-label="Asset directory structure path navigation">
+      <div class="w-24 h-3 skeleton-shimmer rounded"></div>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <div class="lg:col-span-7 space-y-4">
+        <div class="relative overflow-hidden border border-gray-900 bg-gray-950 aspect-square rounded-xl group w-full glass-card transition-all duration-500 hover:border-gray-800/80">
+          
+          <div class="absolute top-4 left-4 z-10 flex flex-col gap-2">
+            <span id="field-asset-badge" class="hidden px-2.5 py-1 rounded text-[9px] font-mono font-black tracking-widest uppercase bg-orange-500 text-black shadow-lg shadow-orange-500/20">
+              ---
+            </span>
+            <span id="field-stock-status" class="px-2.5 py-1 rounded text-[9px] font-mono font-black tracking-widest uppercase bg-gray-900/90 text-gray-400 border border-gray-800 backdrop-blur-sm">
+              VERIFYING STOCK ALLOCATION...
+            </span>
+          </div>
+
+          <div id="gallery-interaction-zone" class="w-full h-full cursor-zoom-in relative overflow-hidden" 
+               onmousemove="executeImageZoom(event)" 
+               onmouseleave="clearImageZoom()"
+               onclick="triggerFullscreenViewer()">
+            <img id="primary-gallery-viewport" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="K.C.O. Portfolio High Resolution Presentation Node Layer" class="w-full h-full object-cover transition-opacity duration-300 opacity-30">
+          </div>
+
+          <div class="absolute bottom-4 right-4 z-10 flex items-center gap-2">
+            <button onclick="triggerFullscreenViewer()" class="bg-gray-950/80 hover:bg-orange-500 border border-gray-900 hover:border-orange-400/30 p-2.5 rounded-xl transition-all text-gray-400 hover:text-black backdrop-blur-md" aria-label="Initialize fullscreen presentation component metrics layout overlay">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-gray-950/40 p-2 border border-gray-900/60 rounded-xl glass-card">
+          <button onclick="stepGalleryView(-1)" class="p-3 bg-gray-950 border border-gray-900 rounded-lg hover:border-orange-500/30 text-gray-400 hover:text-orange-500 transition-all shrink-0" aria-label="Decrement active presentation media angle segment index pointer">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          
+          <div id="thumbnail-strip-line" class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1 flex-1 scroll-smooth">
+            <div class="w-16 h-16 bg-gray-900 skeleton-shimmer rounded-lg shrink-0"></div>
+            <div class="w-16 h-16 bg-gray-900 skeleton-shimmer rounded-lg shrink-0"></div>
+            <div class="w-16 h-16 bg-gray-900 skeleton-shimmer rounded-lg shrink-0"></div>
+            <div class="w-16 h-16 bg-gray-900 skeleton-shimmer rounded-lg shrink-0"></div>
+          </div>
+          
+          <button onclick="stepGalleryView(1)" class="p-3 bg-gray-950 border border-gray-900 rounded-lg hover:border-orange-500/30 text-gray-400 hover:text-orange-500 transition-all shrink-0" aria-label="Increment active presentation media angle segment index pointer">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col space-y-6">
+        
+        <div class="space-y-2 border-b border-gray-900 pb-5">
+          <div class="flex items-center justify-between text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="layers" class="w-3 h-3 text-orange-500/70"></i>
+              <span id="field-category">CLASS LOADING...</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-3 h-3 text-orange-500/70"></i>
+              <span id="field-location">GEOLOCATION LOG LOADING...</span>
+            </div>
+          </div>
+          
+          <h1 id="field-title" class="text-white text-2xl sm:text-3xl font-black tracking-tight uppercase leading-tight pt-1">
+            Processing Core Data Index...
+          </h1>
+          
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[9px] font-mono text-gray-500 pt-1 uppercase">
+            <span>REGISTRY ID // <strong id="field-id" class="text-gray-300">---</strong></span>
+            <span class="text-gray-800">|</span>
+            <span>SKU REFS // <strong id="field-sku" class="text-gray-300">---</strong></span>
+            <span class="text-gray-800">|</span>
+            <span>PRODUCTION YEAR // <strong id="field-year" class="text-gray-300">---</strong></span>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-[#090d16] to-[#050811] border border-gray-900 rounded-xl p-5 relative overflow-hidden glass-card">
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-0.5">
+              <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest block">// SECURED PRICE SPECIFICATION</span>
+              <div id="field-price" class="text-white text-3xl font-black font-mono tracking-tight text-orange-500 pt-0.5">$0.00</div>
+              <div id="field-currency-label" class="text-[8px] text-gray-500 font-mono uppercase tracking-wider">USD REGULATION DEPLOYMENT VALUES</div>
+            </div>
+            
+            <div class="sm:border-l sm:border-gray-900 sm:pl-5 flex-1 flex flex-col justify-center space-y-1">
+              <div class="flex items-center gap-1.5">
+                <span id="field-merchant-name" class="text-xs font-black uppercase text-gray-200 tracking-wide">Broker Authentication Secure</span>
+                <i data-lucide="verified" class="w-3.5 h-3.5 text-orange-400"></i>
+              </div>
+              <div id="field-merchant-rating" class="text-[9px] font-mono text-orange-500/90 tracking-tight flex items-center gap-1">
+                INDEX SYSTEM VERIFYING RUNNING LOGS...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button onclick="commitCartAddition()" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-black text-xs py-4 rounded-xl transition-all uppercase tracking-widest shadow-xl shadow-orange-500/10 cursor-pointer flex items-center justify-center gap-2 border border-orange-400/20">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+              <span>Acquire Allocation</span>
+            </button>
+            <button onclick="executeDirectBuyNowPipeline()" class="w-full bg-gray-950 hover:bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-100 font-black text-xs py-4 rounded-xl transition-all uppercase tracking-widest cursor-pointer flex items-center justify-center gap-2">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-orange-400"></i>
+              <span>Instant Clearing</span>
+            </button>
+          </div>
+          
+          <button id="wishlist-action-btn" onclick="commitWishlistToggle()" class="w-full border border-gray-900 bg-gray-950/40 hover:bg-gray-950 text-white font-bold text-[10px] font-mono py-3 rounded-xl transition-all uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer glass-card group hover:border-orange-500/20">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-gray-500 group-hover:text-orange-500 transition-colors"></i> 
+            <span>Initialize Account Tracking</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center text-[9px] font-mono text-gray-500 uppercase pt-2">
+          <div class="bg-gray-950/40 p-3 border border-gray-900 rounded-xl space-y-1 glass-card">
+            <div class="text-orange-500/70"><i data-lucide="package" class="w-3.5 h-3.5 mx-auto"></i></div>
+            <div class="text-gray-400 font-bold">LOGISTICS FREIGHT</div>
+            <div id="field-shipping" class="text-[8px] text-gray-500 truncate">Pending Query...</div>
+          </div>
+          <div class="bg-gray-950/40 p-3 border border-gray-900 rounded-xl space-y-1 glass-card">
+            <div class="text-orange-500/70"><i data-lucide="shield-check" class="w-3.5 h-3.5 mx-auto"></i></div>
+            <div class="text-gray-400 font-bold">WARRANTY DECK</div>
+            <div id="field-warranty" class="text-[8px] text-gray-500 truncate">Pending Query...</div>
+          </div>
+          <div class="bg-gray-950/40 p-3 border border-gray-900 rounded-xl space-y-1 glass-card">
+            <div class="text-orange-500/70"><i data-lucide="globe-2" class="w-3.5 h-3.5 mx-auto"></i></div>
+            <div class="text-gray-400 font-bold">COMPLIANCE</div>
+            <div class="text-[8px] text-gray-500">Escrow Protected</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-gray-900/60 pt-8">
+      
+      <div class="lg:col-span-7 space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-gray-400 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+            <span>// Asset Structural Parameters Matrix Grid</span>
+          </h2>
+          <div id="technical-spec-matrix" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="h-12 bg-gray-900 skeleton-shimmer rounded-lg"></div>
+            <div class="h-12 bg-gray-900 skeleton-shimmer rounded-lg"></div>
+            <div class="h-12 bg-gray-900 skeleton-shimmer rounded-lg"></div>
+            <div class="h-12 bg-gray-900 skeleton-shimmer rounded-lg"></div>
+          </div>
+        </div>
+
+        <div class="space-y-2 bg-gray-950/20 border border-gray-900 p-5 rounded-xl glass-card">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-gray-400">// Portfolio Architecture Narrative Overview</h2>
+          <div class="w-full text-gray-400 text-xs sm:text-sm font-light leading-relaxed pt-1 whitespace-pre-line">
+            <p id="field-desc">Compiling dynamic tracking nodes from remote global distribution nodes cluster indices matrix registry sequence...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 space-y-4">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-gray-400 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+          <span>// Integrated Media Telemetry Streaming Reel</span>
+        </h2>
+        <div class="border border-gray-900 bg-gray-950 aspect-video rounded-xl overflow-hidden glass-card relative group">
+          <video id="product-video-player" class="w-full h-full object-cover" controls preload="metadata" playsinline muted>
+            <track kind="captions" src="" srclang="en" label="English Technical Subtitles" default>
+          </video>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="border-t border-gray-900 pt-8 space-y-4 hidden">
+      <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400 flex items-center gap-2">
+        <i data-lucide="history" class="w-3.5 h-3.5 text-orange-500"></i>
+        <span>// Retrospective Session History Cache Registry Nodes</span>
+      </h3>
+      <div id="grid-recently-viewed" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        </div>
+    </section>
+
+    <section class="border-t border-gray-900 pt-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+      
+      <div class="md:col-span-4 space-y-3">
+        <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400 flex items-center gap-2">
+          <span>// Cryptographic Clearance Audit</span>
+        </h3>
+        <div class="bg-gray-950/40 border border-gray-900 rounded-xl p-5 space-y-3 glass-card">
+          <div class="space-y-0.5">
+            <div class="text-3xl font-black font-mono text-white">99.8%</div>
+            <div class="text-[9px] font-mono text-gray-500 uppercase tracking-wider">System Validation Standard Quality Score</div>
+          </div>
+          <div class="w-full h-1 bg-gray-900 rounded-full overflow-hidden">
+            <div class="h-full bg-orange-500 w-[99.8%] rounded-full"></div>
+          </div>
+          <p class="text-[10px] font-mono text-gray-500 leading-relaxed uppercase">
+            All registered acquisitions clear rigorous mechanical checking, escrow compliance parameters, and multi-country freight standards verification pipelines.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:col-span-8 space-y-3">
+        <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400">// Client Verification Feedback Record Log Entries</h3>
+        <div id="customer-reviews-container" class="space-y-3">
+          <div class="p-4 bg-gray-950/40 border border-gray-900 rounded-xl space-y-2 skeleton-shimmer h-20"></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="border-t border-gray-900 bg-[#05080f] py-6 text-center text-[10px] font-mono text-gray-600 uppercase tracking-widest w-full">
+    <div>K.C.O. GLOBAL MARKETPLACE ENGINE PROTOCOLS // ALL SYSTEM DATA PARALLEL MATRIX SECURED UNDER ARIA ACCESSIBILITY PARADIGM</div>
+  </footer>
+
+  <div id="fullscreen-gallery-overlay" class="fixed inset-0 bg-gray-950/98 z-50 hidden backdrop-blur-xl flex flex-col justify-between p-4 sm:p-6 select-none transition-all duration-300" role="dialog" aria-modal="true" aria-label="High precision full screen structural image viewer asset layout layer">
+    
+    <div class="flex justify-between items-center w-full border-b border-gray-900 pb-4">
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+        <span id="fullscreen-gallery-counter" class="text-xs font-mono text-gray-400 tracking-widest uppercase">IMAGE ANALYSIS INDEX // 00 / 00</span>
+      </div>
+      <button onclick="dismissFullscreenViewer()" class="p-2 bg-gray-900 hover:bg-orange-500 hover:text-black transition-all rounded-lg text-white border border-gray-800 hover:border-orange-400/30 cursor-pointer" aria-label="Terminate full screen asset presentations visualization overlay layer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <div class="flex justify-between items-center flex-1 max-w-6xl mx-auto w-full gap-4 relative">
+      <button onclick="stepFullscreenImage(-1)" class="p-3 sm:p-4 bg-gray-900/60 hover:bg-orange-500/10 border border-gray-800 hover:border-orange-500/40 text-white rounded-xl transition-all cursor-pointer backdrop-blur-sm shrink-0" aria-label="Decrement full screen dynamic picture layout view target matrix selection index array">
+        <i data-lucide="arrow-left" class="w-5 h-5 sm:w-6 sm:h-6 text-orange-500"></i>
+      </button>
+      
+      <div class="flex-1 flex justify-center items-center max-h-[72vh] p-2 overflow-hidden transition-all duration-500">
+        <img id="fullscreen-canvas-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="K.C.O. Extended High Resolution Telemetry Render Output Frame Plane" class="object-contain max-w-full max-h-[70vh] rounded-xl shadow-2xl border border-gray-900 bg-black/40">
+      </div>
+      
+      <button onclick="stepFullscreenImage(1)" class="p-3 sm:p-4 bg-gray-900/60 hover:bg-orange-500/10 border border-gray-800 hover:border-orange-500/40 text-white rounded-xl transition-all cursor-pointer backdrop-blur-sm shrink-0" aria-label="Increment full screen dynamic picture layout view target matrix selection index array">
+        <i data-lucide="arrow-right" class="w-5 h-5 sm:w-6 sm:h-6 text-orange-500"></i>
+      </button>
+    </div>
+
+    <div class="w-full text-center border-t border-gray-900 pt-4 flex flex-col sm:flex-row items-center justify-between text-[9px] font-mono text-gray-500 uppercase tracking-widest gap-2">
+      <span>// COMPONENT DEPLOYMENT BOUNDS REGISTERED MATRIX DISPLAY MODE</span>
+      <span class="text-gray-600 hidden sm:inline">USE SYSTEM MATRIX ESC KEY OR GALLERY DIRECTION ARROWS TO MANIPULATE VIEWPORTS</span>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#070b14]/95 border border-orange-500 text-white text-[11px] font-mono px-5 py-4 rounded-xl shadow-2xl transform translate-y-20 opacity-0 pointer-events-none transition-all cubic-bezier(0.16, 1, 0.3, 1) duration-400 flex items-center gap-3 max-w-md w-[90%] backdrop-blur-md" role="alert" aria-live="assertive">
+    <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping shrink-0"></span>
+    <span id="toast-message" class="tracking-wide leading-relaxed uppercase flex-1">Initializing operational network monitoring lines sequence parameters...</span>
+  </div>
+
+  <script src="product.js" defer></script>
+</body>
+</html>
