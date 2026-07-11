@@ -1,17 +1,24 @@
-[
-  {
-    "id": "kco-prod-001",
+{
+  "1": {
+    "id": 1,
     "sku": "KCO-TECH-2026-X1",
-    "title": "K.C.O. Elite Wireless Headset",
+    "name": "K.C.O. Elite Wireless Headset",
     "category": "Electronics",
+    "subCategory": "Audio Equipment",
     "badge": "Best Seller",
-    "price": 299.99,
+    "priceUSD": 299.99,
+    "stockCount": 42,
+    "stockStatus": "In Stock",
     "location": "Global Distribution Hub A",
     "year": 2026,
-    "stockStatus": "In Stock",
-    "images": [
+    "gallery": [
       "assets/images/products/headset-main.webp",
       "assets/images/products/headset-side.webp"
+    ],
+    "threeSixtyFrames": [
+      "assets/images/products/headset-360/01.webp",
+      "assets/images/products/headset-360/02.webp",
+      "assets/images/products/headset-360/03.webp"
     ],
     "specs": {
       "Connectivity": "Bluetooth 5.3",
@@ -23,7 +30,7 @@
     "shipping": "Free Next-Day Delivery",
     "warranty": "2-Year Global Warranty",
     "videoUrl": "assets/videos/products/headset-demo.mp4",
-    "description": "Experience premium high-fidelity audio engineered for the global professional. Features dynamic noise cancellation and ergonomic memory foam earcups.",
+    "desc": "Experience premium high-fidelity audio engineered for the global professional. Features dynamic noise cancellation and ergonomic memory foam earcups.",
     "reviews": [
       {
         "client": "Sarah J.",
@@ -37,19 +44,26 @@
       }
     ]
   },
-  {
-    "id": "kco-prod-002",
+  "2": {
+    "id": 2,
     "sku": "KCO-WEAR-2026-S5",
-    "title": "K.C.O. Chrono Smartwatch v5",
+    "name": "K.C.O. Chrono Smartwatch v5",
     "category": "Wearables",
+    "subCategory": "Smartwatches",
     "badge": "New Arrival",
-    "price": 449.00,
+    "priceUSD": 449.00,
+    "stockCount": 8,
+    "stockStatus": "Low Stock",
     "location": "Global Distribution Hub B",
     "year": 2026,
-    "stockStatus": "Low Stock",
-    "images": [
+    "gallery": [
       "assets/images/products/watch-front.webp",
       "assets/images/products/watch-detail.webp"
+    ],
+    "threeSixtyFrames": [
+      "assets/images/products/watch-360/01.webp",
+      "assets/images/products/watch-360/02.webp",
+      "assets/images/products/watch-360/03.webp"
     ],
     "specs": {
       "Display": "AMOLED Sapphire Crystal",
@@ -61,7 +75,7 @@
     "shipping": "Calculated at Checkout",
     "warranty": "1-Year Manufacturer Warranty",
     "videoUrl": "assets/videos/products/watch-review.mp4",
-    "description": "A luxury smartwatch merging timeless horology aesthetics with cutting-edge health and productivity telemetry tracking.",
+    "desc": "A luxury smartwatch merging timeless horology aesthetics with cutting-edge health and productivity telemetry tracking.",
     "reviews": [
       {
         "client": "Elena R.",
@@ -70,4 +84,4 @@
       }
     ]
   }
-]
+}
