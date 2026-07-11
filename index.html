@@ -32,13 +32,14 @@
       </div>
 
       <div class="flex-1 max-w-xl relative">
-        <input id="search-input" type="text" oninput="handleSearch(this.value)" placeholder="Search hypercars, trucks, estates..." 
+
+<input id="search-input" type="text" oninput="handleSearch(this.value)" placeholder="Search hypercars, trucks, estates..." 
                class="w-full bg-[#1e293b] text-sm text-gray-200 pl-4 pr-10 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-orange-500 placeholder-gray-500 transition">
         <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
           <i data-lucide="search" class="w-5 h-5"></i>
         </button>
       </div>
-
+   
       <div class="flex items-center gap-4 shrink-0">
         <div class="hidden md:flex items-center gap-2">
           <select id="country" onchange="saveRegionSettings()" class="bg-[#1e293b] text-xs text-gray-300 border border-gray-700 rounded-md px-2 py-1.5 focus:outline-none focus:border-orange-500 cursor-pointer"></select>
