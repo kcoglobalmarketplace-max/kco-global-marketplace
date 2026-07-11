@@ -39,8 +39,14 @@ if (counter) counter.innerText = KCO_STATE.cart.length;
 }
 
 function renderEmptyState(reason) {
-const grid = document.getElementById('product-grid');
-grid.innerHTML = <div class="col-span-full py-20 text-center text-gray-500 font-mono text-xs uppercase">${reason}</div>;
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    grid.innerHTML = `
+    <div class="col-span-full py-20 text-center text-gray-500 font-mono text-xs uppercase">
+        ${reason}
+    </div>
+    `;
 }
 
 // 3. Infrastructure: Search/Filter Debouncing (Performance)
