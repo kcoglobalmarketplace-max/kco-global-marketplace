@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | EveryHandle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="brand-section">
+      <a href="index.html" class="logo">EVERYHANDLE</a>
+      <span class="verified-pill">ADMIN</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="showroom.html">Showroom</a>
+      <a href="messaging.html">Messaging</a>
+      <a href="services.html">Services</a>
+    </div>
+  </nav>
+
+  <!-- ADMIN LOGIN -->
+  <div class="admin-login" id="adminLogin">
+    <div class="login-card">
+      <h1>Admin Dashboard</h1>
+      <p>Enter your credentials to access the admin panel</p>
+      <form onsubmit="handleLogin(event)">
+        <input type="text" id="adminUsername" placeholder="Username" class="admin-input" required>
+        <input type="password" id="adminPassword" placeholder="Password" class="admin-input" required>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+      <p class="login-hint">Default: admin / admin123</p>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div class="admin-dashboard" id="adminDashboard" style="display: none;">
+    
+    <!-- STATS OVERVIEW -->
+    <div class="admin-stats">
+      <div class="stat-card">
+        <h3>Total Listings</h3>
+        <p class="stat-number" id="totalListings">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Available</h3>
+        <p class="stat-number" id="availableListings">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Sold</h3>
+        <p class="stat-number" id="soldListings">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Total Revenue</h3>
+        <p class="stat-number" id="totalRevenue">$0</p>
+      </div>
+    </div>
+
+    <!-- ADD NEW LISTING -->
+    <div class="admin-section">
+      <h2 class="admin-section-title">Add New Listing</h2>
+      <form class="listing-form" onsubmit="addListing(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Platform</label>
+            <select id="listingPlatform" class="form-input" required>
+              <option value="">Select Platform</option>
+              <option value="facebook">Facebook</option>
+              <option value="tiktok">TikTok</option>
+              <option value="instagram">Instagram</option>
+              <option value="x">X (Twitter)</option>
+              <option value="youtube">YouTube</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telegram">Telegram</option>
+              <option value="discord">Discord</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="reddit">Reddit</option>
+              <option value="snapchat">Snapchat</option>
+              <option value="pinterest">Pinterest</option>
+              <option value="threads">Threads</option>
+              <option value="tumblr">Tumblr</option>
+              <option value="bluesky">Bluesky</option>
+              <option value="messenger">Messenger</option>
+              <option value="signal">Signal</option>
+              <option value="wechat">WeChat</option>
+              <option value="viber">Viber</option>
+              <option value="line">LINE</option>
+              <option value="google-messages">Google Messages</option>
+              <option value="imessage">iMessage</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <select id="listingCountry" class="form-input" required>
+              <option value="">Select Country</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Account Type</label>
+            <input type="text" id="listingType" class="form-input" placeholder="e.g., Personal, Business, Creator" required>
+          </div>
+          <div class="form-group">
+            <label>Followers/Subscribers</label>
+            <input type="text" id="listingFollowers" class="form-input" placeholder="e.g., 10K, 50K, 100K">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Price (USD)</label>
+            <input type="number" id="listingPrice" class="form-input" placeholder="0.00" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="listingStatus" class="form-input" required>
+              <option value="available">Available</option>
+              <option value="sold">Sold</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="listingDescription" class="form-input form-textarea" placeholder="Describe the account..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image URL (optional)</label>
+          <input type="url" id="listingImage" class="form-input" placeholder="https://example.com/image.jpg">
+        </div>
+        <button type="submit" class="btn-add">Add Listing</button>
+      </form>
+    </div>
+
+    <!-- LISTINGS MANAGEMENT -->
+    <div class="admin-section">
+      <h2 class="admin-section-title">Manage Listings</h2>
+      <div class="listings-table-container">
+        <table class="listings-table">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Country</th>
+              <th>Type</th>
+              <th>Followers</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="listingsTableBody">
+            <tr>
+              <td colspan="7" class="no-data">No listings yet. Add your first listing above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

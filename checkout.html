@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | EveryHandle Marketplace</title>
+  <link rel="stylesheet" href="payment.css">
+  <style>
+    /* Checkout-specific styles */
+    .checkout-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .order-summary {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .order-summary h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .item-platform {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .item-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-top: 16px;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .total-label {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .total-amount {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent-orange);
+    }
+
+    .customer-info {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .customer-info h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #171f30;
+      border: 1px solid #2d3b54;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .btn-proceed {
+      width: 100%;
+      background: var(--primary-gradient);
+      color: var(--text-primary);
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 85, 0, 0.3);
+      margin-top: 24px;
+    }
+
+    .btn-proceed:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 85, 0, 0.5);
+    }
+
+    .btn-proceed:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .checkout-grid {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .secure-badge span {
+      color: var(--success-green);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="brand-section">
+      <a href="index.html" class="logo">EVERYHANDLE</a>
+      <span class="verified-pill">🔒 SECURE CHECKOUT</span>
+    </div>
+    <div class="nav-links">
+      <a href="showroom.html">← Continue Shopping</a>
+    </div>
+  </header>
+
+  <!-- Checkout Container -->
+  <div class="checkout-container">
+    <div class="checkout-grid">
+      <!-- Left Column: Customer Info -->
+      <div class="checkout-left">
+        <!-- Customer Information -->
+        <div class="customer-info">
+          <h2>Customer Information</h2>
+          <form id="checkoutForm">
+            <div class="form-group">
+              <label class="form-label" for="customerName">Full Name *</label>
+              <input 
+                type="text" 
+                id="customerName" 
+                class="form-input" 
+                placeholder="Enter your full name"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customerEmail">Email Address *</label>
+              <input 
+                type="email" 
+                id="customerEmail" 
+                class="form-input" 
+                placeholder="your@email.com"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customerPhone">Phone Number *</label>
+              <input 
+                type="tel" 
+                id="customerPhone" 
+                class="form-input" 
+                placeholder="+1 234 567 8900"
+                required
+              >
+            </div>
+
+            <button type="submit" class="btn-proceed" id="proceedToPayment">
+              Proceed to Payment →
+            </button>
+
+            <div class="secure-badge">
+              <span>🔒</span>
+              <span>Your information is secure and encrypted</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Summary -->
+      <div class="checkout-right">
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="orderItems">
+            <!-- Order items will be dynamically populated -->
+            <div class="order-item">
+              <div class="item-details">
+                <div class="item-name">Loading...</div>
+                <div class="item-platform">Please wait</div>
+              </div>
+              <div class="item-price">--</div>
+            </div>
+          </div>
+          <div class="order-total">
+            <div class="total-label">Total:</div>
+            <div class="total-amount" id="orderTotal">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EveryHandle Marketplace | Global</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="payment.css">
+
+  <style>
+    /* Reset & Base Setup */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0b0e14;
+      color: #ffffff;
+      padding-bottom: 50px;
+    }
+
+    /* CLEAN MOBILE NAVBAR (Sticky Top Bar Only) */
+    .navbar {
+      background: #0f1420;
+      padding: 16px 20px;
+      border-bottom: 1px solid #1c2536;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .verified-pill {
+      background: rgba(0, 210, 255, 0.15);
+      color: #00d2ff;
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .nav-links-desktop a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links-desktop a.active {
+      color: #ff6b00;
+    }
+
+    .btn-list-sm {
+      color: #ff6b00 !important;
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      padding: 7px 16px;
+      border-radius: 6px;
+      background: rgba(255, 107, 0, 0.08);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* HERO CARD CONTAINER */
+    .hero-card {
+      max-width: 1100px;
+      margin: 16px 12px;
+      background: linear-gradient(180deg, #131a29 0%, #0e1422 100%);
+      border: 1px solid #1d283d;
+      border-radius: 14px;
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 107, 0, 0.1);
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      color: #ff6b00;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+
+    .highlight-orange {
+      background: linear-gradient(90deg, #ff5500 0%, #ffaa00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 auto 24px auto;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-orange {
+      background: linear-gradient(90deg, #ff5500 0%, #ff8800 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+    }
+
+    .btn-outline-glow {
+      background: rgba(255, 255, 255, 0.03);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #2d3b54;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      border-top: 1px solid #1c273c;
+      padding-top: 18px;
+      text-align: left;
+    }
+
+    .feature-item h4 {
+      font-size: 13px;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .feature-item p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* MAIN FILTER & SEARCH SECTION */
+    .filter-section {
+      max-width: 1100px;
+      margin: 0 12px 20px 12px;
+      background: #0f1420;
+      border: 1px solid #1c2536;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Search Bar Input */
+    .search-container {
+      width: 100%;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background-color: #171f30;
+      border: 1px solid #232e46;
+      color: #ffffff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .search-container input::placeholder {
+      color: #8395b0;
+    }
+
+    /* Platform Categories */
+    .social-platforms-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-group-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #ff6b00;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .social-chips-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .social-chips-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .social-chip {
+      background: #172033;
+      border: 1px solid #232e46;
+      color: #cbd5e1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .social-chip:hover, .social-chip.active {
+      background: rgba(255, 107, 0, 0.15);
+      border-color: #ff6b00;
+      color: #ffffff;
+    }
+
+    /* Controls Grid (Country & Currency Dropdowns) */
+    .global-controls {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      width: 100%;
+      padding-top: 4px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ff6b00;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .global-select {
+      background: #171f30;
+      border: 1px solid #2d3b54;
+      color: #00d2ff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .global-select option {
+      background: #0f1420;
+      color: #ffffff;
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    /* SCROLLABLE MARKETPLACE INDEX */
+    .index-section {
+      margin: 28px 12px 0 12px;
+    }
+
+    .index-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .index-title {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .index-count {
+      font-size: 12px;
+      color: #8395b0;
+    }
+
+    .index-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .index-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .index-card {
+      flex: 0 0 auto;
+      background: #121826;
+      border: 1px solid #1d273a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .index-card.active {
+      border-color: #ff6b00;
+      background: #172033;
+    }
+
+    .index-name {
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .index-badge {
+      background: #1c273c;
+      color: #00d2ff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* SHOWROOM SECTION */
+    .showroom-section {
+      margin: 28px 12px 0 12px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .account-card {
+      background: #121826;
+      border: 1px solid #1d273a;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge-tiktok {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-fb {
+      background: rgba(24, 119, 242, 0.2);
+      color: #1877f2;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 13px;
+      color: #8395b0;
+      margin-bottom: 16px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #1a2334;
+      padding-top: 12px;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .btn-buy-sm {
+      background: #ff5500;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    /* DESKTOP BREAKPOINT ENHANCEMENTS */
+    @media (min-width: 768px) {
+      .navbar {
+        padding: 18px 5%;
+      }
+
+      .hero-card, .filter-section {
+        margin: 24px auto;
+      }
+
+      .hero-card {
+        padding: 44px 32px;
+      }
+
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .global-controls {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+        text-align: center;
+      }
+
+      .index-scroll {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .listings-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CLEAN STICKY NAVBAR -->
+  <header class="navbar">
+    <div class="brand-section">
+      <div class="logo">EVERYHANDLE</div>
+      <span class="verified-pill">GLOBAL</span>
+    </div>
+    <div class="nav-links-desktop">
+      <a href="index.html" class="active">Home</a>
+      <a href="showroom.html">Showroom</a>
+      <a href="messaging.html">Messaging</a>
+      <a href="services.html">Services</a>
+      <a href="admin.html" class="btn-list-sm">Admin</a>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <div class="hero-card">
+    <span class="hero-tag">🔒 100% Escrow Protected</span>
+    
+    <h1 class="hero-title">
+      Buy & sell Social Media Accounts & Verified Handles <br>
+      <span class="highlight-orange">With Zero Friction.</span>
+    </h1>
+    
+    <p class="hero-subtitle"></p>
+
+    <div class="cta-group">
+      <a href="showroom.html" class="btn-orange" style="text-decoration: none; display: inline-block;">Browse Marketplace</a>
+      <a href="showroom.html" class="btn-outline-glow" style="text-decoration: none; display: inline-block;">Live Showroom</a>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item">
+        <h4>Worldwide</h4>
+        <p>190+ Countries</p>
+      </div>
+      <div class="feature-item">
+        <h4>Multi-Currency</h4>
+        <p>Instant Conversion</p>
+      </div>
+      <div class="feature-item">
+        <h4>Escrow Secured</h4>
+        <p>Safe Handover</p>
+      </div>
+      <div class="feature-item">
+        <h4>24/7 Support</h4>
+        <p>Global Agents</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR & PLATFORMS CONTAINER -->
+  <div class="filter-section">
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" placeholder="Search TikTok, Facebook, Instagram handles...">
+    </div>
+
+    <!-- Category Platforms -->
+    <div class="social-platforms-wrapper">
+      
+      <!-- Mainstream Social Media -->
+      <span class="social-group-label">🌐 Mainstream Social</span>
+      <div class="social-chips-row">
+        <a href="showroom.html?platform=facebook" class="social-chip active">Facebook</a>
+        <a href="showroom.html?platform=tiktok" class="social-chip">TikTok</a>
+        <a href="showroom.html?platform=instagram" class="social-chip">Instagram</a>
+        <a href="showroom.html?platform=x" class="social-chip">X (Twitter)</a>
+        <a href="showroom.html?platform=nextdoor" class="social-chip">Nextdoor</a>
+        <a href="showroom.html?platform=youtube" class="social-chip">YouTube</a>
+        <a href="showroom.html?platform=pinterest" class="social-chip">Pinterest</a>
+        <a href="showroom.html?platform=threads" class="social-chip">Threads</a>
+        <a href="showroom.html?platform=linkedin" class="social-chip">LinkedIn</a>
+        <a href="showroom.html?platform=reddit" class="social-chip">Reddit</a>
+        <a href="showroom.html?platform=snapchat" class="social-chip">Snapchat</a>
+        <a href="showroom.html?platform=lemon8" class="social-chip">Lemon8</a>
+        <a href="showroom.html?platform=tumblr" class="social-chip">Tumblr</a>
+        <a href="showroom.html?platform=bluesky" class="social-chip">Bluesky</a>
+      </div>
+
+      <!-- Messaging & Chat Apps -->
+      <span class="social-group-label">💬 Messaging & Chat</span>
+      <div class="social-chips-row">
+        <a href="showroom.html?platform=telegram" class="social-chip">Telegram</a>
+        <a href="showroom.html?platform=whatsapp" class="social-chip">WhatsApp</a>
+        <a href="showroom.html?platform=messenger" class="social-chip">Messenger</a>
+        <a href="showroom.html?platform=discord" class="social-chip">Discord</a>
+        <a href="showroom.html?platform=signal" class="social-chip">Signal</a>
+        <a href="showroom.html?platform=wechat" class="social-chip">WeChat</a>
+        <a href="showroom.html?platform=line" class="social-chip">LINE</a>
+        <a href="showroom.html?platform=viber" class="social-chip">Viber</a>
+        <a href="showroom.html?platform=google-messages" class="social-chip">Google Messages</a>
+        <a href="showroom.html?platform=imessage" class="social-chip">iMessage</a>
+      </div>
+
+      <!-- Dating & Matchmaking Apps -->
+      <span class="social-group-label">💘 Dating & Matchmaking</span>
+      <div class="social-chips-row">
+        <a href="#" class="social-chip">Tinder</a>
+        <a href="#" class="social-chip">Bumble</a>
+        <a href="#" class="social-chip">Hinge</a>
+        <a href="#" class="social-chip">Match</a>
+        <a href="#" class="social-chip">OkCupid</a>
+        <a href="#" class="social-chip">POF</a>
+        <a href="#" class="social-chip">Grindr</a>
+        <a href="#" class="social-chip">Feeld</a>
+        <a href="#" class="social-chip">eHarmony</a>
+        <a href="#" class="social-chip">Raya</a>
+        <a href="#" class="social-chip">Coffee Meets Bagel</a>
+      </div>
+
+    </div>
+
+    <!-- Dynamic Country & Currency Controls -->
+    <div class="global-controls">
+      
+      <!-- Country Selector -->
+      <div class="control-group">
+        <label for="countrySelector" class="control-label">📍 Select Country</label>
+        <select class="global-select" id="countrySelector" onchange="onCountryChange()">
+          <option value="" selected>🌐 Select Country (50 Available)</option>
+        </select>
+      </div>
+
+      <!-- Currency Selector -->
+      <div class="control-group">
+        <label for="currencySelector" class="control-label">💱 Select Currency</label>
+        <select class="global-select" id="currencySelector" onchange="updateCurrencies()">
+          <option value="" selected>💱 Select Currency</option>
+        </select>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MARKETPLACE INDEX SECTION -->
+  <section class="index-section">
+    <div class="index-header">
+      <h2 class="index-title">MARKETPLACE INDEX</h2>
+      <span class="index-count">Swipe to view →</span>
+    </div>
+
+    <div class="index-scroll">
+      <a href="#" class="index-card active">
+        <span class="index-name">🔥 All</span>
+        <span class="index-badge">1,240</span>
+      </a>
+      <a href="#" class="index-card">
+        <span class="index-name">🎵 TikTok</span>
+        <span class="index-badge">480</span>
+      </a>
+      <a href="#" class="index-card">
+        <span class="index-name">📷 Instagram</span>
+        <span class="index-badge">310</span>
+      </a>
+      <a href="#" class="index-card">
+        <span class="index-name">📘 Facebook</span>
+        <span class="index-badge">220</span>
+      </a>
+      <a href="#" class="index-card">
+        <span class="index-name">▶️ YouTube</span>
+        <span class="index-badge">145</span>
+      </a>
+      <a href="#" class="index-card">
+        <span class="index-name">💰 Monetized</span>
+        <span class="index-badge">85</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- DYNAMIC LOGIC SCRIPT -->
+  <script>
+    const countryData = [
+      // North & South America
+      { name: "United States", flag: "🇺🇸", code: "US", currency: "USD", symbol: "$", rate: 1.00 },
+      { name: "Canada", flag: "🇨🇦", code: "CA", currency: "CAD", symbol: "CA$", rate: 1.36 },
+      { name: "Mexico", flag: "🇲🇽", code: "MX", currency: "MXN", symbol: "MEX$", rate: 16.70 },
+      { name: "Brazil", flag: "🇧🇷", code: "BR", currency: "BRL", symbol: "R$", rate: 5.15 },
+      { name: "Argentina", flag: "🇦🇷", code: "AR", currency: "ARS", symbol: "$", rate: 900.00 },
+      { name: "Chile", flag: "🇨🇱", code: "CL", currency: "CLP", symbol: "CLP$", rate: 930.00 },
+      { name: "Colombia", flag: "🇨🇴", code: "CO", currency: "COP", symbol: "COL$", rate: 3850.00 },
+      { name: "Peru", flag: "🇵🇪", code: "PE", currency: "PEN", symbol: "S/", rate: 3.72 },
+      { name: "Jamaica", flag: "🇯🇲", code: "JM", currency: "JMD", symbol: "J$", rate: 155.00 },
+      { name: "Costa Rica", flag: "🇨🇷", code: "CR", currency: "CRC", symbol: "₡", rate: 510.00 },
+
+      // Europe
+      { name: "Germany", flag: "🇩🇪", code: "DE", currency: "EUR", symbol: "€", rate: 0.92 },
+      { name: "United Kingdom", flag: "🇬🇧", code: "GB", currency: "GBP", symbol: "£", rate: 0.78 },
+      { name: "Switzerland", flag: "🇨🇭", code: "CH", currency: "CHF", symbol: "CHF", rate: 0.91 },
+      { name: "Poland", flag: "🇵🇱", code: "PL", currency: "PLN", symbol: "zł", rate: 3.95 },
+      { name: "Sweden", flag: "🇸🇪", code: "SE", currency: "SEK", symbol: "kr", rate: 10.80 },
+      { name: "Norway", flag: "🇳🇴", code: "NO", currency: "NOK", symbol: "kr", rate: 10.60 },
+      { name: "Denmark", flag: "🇩🇰", code: "DK", currency: "DKK", symbol: "kr.", rate: 6.88 },
+      { name: "Hungary", flag: "🇭🇺", code: "HU", currency: "HUF", symbol: "Ft", rate: 360.00 },
+      { name: "Czechia", flag: "🇨🇿", code: "CZ", currency: "CZK", symbol: "Kč", rate: 23.10 },
+      { name: "Romania", flag: "🇷🇴", code: "RO", currency: "RON", symbol: "lei", rate: 4.58 },
+      { name: "Turkey", flag: "🇹🇷", code: "TR", currency: "TRY", symbol: "₺", rate: 32.20 },
+      { name: "Iceland", flag: "🇮🇸", code: "IS", currency: "ISK", symbol: "kr", rate: 139.00 },
+
+      // Africa
+      { name: "Nigeria", flag: "🇳🇬", code: "NG", currency: "NGN", symbol: "₦", rate: 1500.00 },
+      { name: "Kenya", flag: "🇰🇪", code: "KE", currency: "KES", symbol: "KSh", rate: 130.00 },
+      { name: "South Africa", flag: "🇿🇦", code: "ZA", currency: "ZAR", symbol: "R", rate: 18.50 },
+      { name: "Ghana", flag: "🇬🇭", code: "GH", currency: "GHS", symbol: "GH₵", rate: 14.50 },
+      { name: "Egypt", flag: "🇪🇬", code: "EG", currency: "EGP", symbol: "E£", rate: 47.50 },
+      { name: "Morocco", flag: "🇲🇦", code: "MA", currency: "MAD", symbol: "MAD", rate: 10.05 },
+      { name: "Ethiopia", flag: "🇪🇹", code: "ET", currency: "ETB", symbol: "Br", rate: 57.20 },
+      { name: "Tanzania", flag: "🇹🇿", code: "TZ", currency: "TZS", symbol: "TSh", rate: 2600.00 },
+      { name: "Uganda", flag: "🇺🇬", code: "UG", currency: "UGX", symbol: "USh", rate: 3780.00 },
+      { name: "Zambia", flag: "🇿🇲", code: "ZM", currency: "ZMW", symbol: "ZK", rate: 25.50 },
+
+      // Asia & Middle East
+      { name: "India", flag: "🇮🇳", code: "IN", currency: "INR", symbol: "₹", rate: 83.30 },
+      { name: "Japan", flag: "🇯🇵", code: "JP", currency: "JPY", symbol: "¥", rate: 155.00 },
+      { name: "China", flag: "🇨🇳", code: "CN", currency: "CNY", symbol: "¥", rate: 7.23 },
+      { name: "South Korea", flag: "🇰🇷", code: "KR", currency: "KRW", symbol: "₩", rate: 1360.00 },
+      { name: "Singapore", flag: "🇸🇬", code: "SG", currency: "SGD", symbol: "S$", rate: 1.35 },
+      { name: "United Arab Emirates", flag: "🇦🇪", code: "AE", currency: "AED", symbol: "AED", rate: 3.67 },
+      { name: "Saudi Arabia", flag: "🇸🇦", code: "SA", currency: "SAR", symbol: "SR", rate: 3.75 },
+      { name: "Pakistan", flag: "🇵🇰", code: "PK", currency: "PKR", symbol: "RS", rate: 278.00 },
+      { name: "Philippines", flag: "🇵🇭", code: "PH", currency: "PHP", symbol: "₱", rate: 57.50 },
+      { name: "Indonesia", flag: "🇮🇩", code: "ID", currency: "IDR", symbol: "Rp", rate: 16000.00 },
+      { name: "Vietnam", flag: "🇻🇳", code: "VN", currency: "VND", symbol: "₫", rate: 25400.00 },
+      { name: "Thailand", flag: "🇹🇭", code: "TH", currency: "THB", symbol: "฿", rate: 36.70 },
+      { name: "Malaysia", flag: "🇲🇾", code: "MY", currency: "MYR", symbol: "RM", rate: 4.71 },
+      { name: "Israel", flag: "🇮🇱", code: "IL", currency: "ILS", symbol: "₪", rate: 3.68 },
+      { name: "Qatar", flag: "🇶🇦", code: "QA", currency: "QAR", symbol: "QR", rate: 3.64 },
+
+      // Oceania
+      { name: "Australia", flag: "🇦🇺", code: "AU", currency: "AUD", symbol: "A$", rate: 1.52 },
+      { name: "New Zealand", flag: "🇳🇿", code: "NZ", currency: "NZD", symbol: "NZ$", rate: 1.64 },
+      { name: "Fiji", flag: "🇫🇯", code: "FJ", currency: "FJD", symbol: "FJ$", rate: 2.25 }
+    ];
+
+    function initDropdowns() {
+      const countrySelect = document.getElementById('countrySelector');
+      const currencySelect = document.getElementById('currencySelector');
+
+      if (!countrySelect || !currencySelect) return;
+
+      // Reset and build Country dropdown
+      countrySelect.innerHTML = '<option value="">🌐 Select Country (50 Available)</option>';
+      countryData.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.code;
+        option.textContent = `${item.flag} ${item.name}`;
+        countrySelect.appendChild(option);
+      });
+
+      // Reset and build Currency dropdown
+      currencySelect.innerHTML = '<option value="">💱 Select Currency</option>';
+      countryData.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.currency;
+        option.dataset.symbol = item.symbol;
+        option.dataset.rate = item.rate;
+        option.textContent = `${item.flag} ${item.currency} (${item.symbol})`;
+        currencySelect.appendChild(option);
+      });
+    }
+
+    // Run initialization as soon as DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDropdowns);
+    } else {
+      initDropdowns();
+    }
+
+    // Sync selected country to currency dropdown
+    function onCountryChange() {
+      const selectedCode = document.getElementById('countrySelector').value;
+      const match = countryData.find(item => item.code === selectedCode);
+
+      if (match) {
+        const currencySelect = document.getElementById('currencySelector');
+        currencySelect.value = match.currency;
+        updateCurrencies();
+      }
+    }
+
+    // Recalculate price displays across cards
+    function updateCurrencies() {
+      const currencySelect = document.getElementById('currencySelector');
+      const selectedOpt = currencySelect.options[currencySelect.selectedIndex];
+      if (!selectedOpt || !selectedOpt.dataset.rate) return;
+
+      const symbol = selectedOpt.dataset.symbol || "₦";
+      const rate = parseFloat(selectedOpt.dataset.rate) || 1;
+
+      document.querySelectorAll('.card-price').forEach(priceTag => {
+        const baseNGN = parseFloat(priceTag.dataset.ngn);
+        if (!isNaN(baseNGN)) {
+          const converted = (baseNGN / rate).toLocaleString(undefined, { maximumFractionDigits: 0 });
+          priceTag.textContent = `${symbol}${converted}`;
+        }
+      });
+    }
+  </script>
+
+  <script src="services.js"></script>
+  <script src="showroom.js"></script>
+  <script src="checkout.js"></script>
+  <script src="payment.js"></script>
+  <script src="card-payment.js"></script>
+  <script src="messaging.js"></script>
+  <script src="admin.js"></script>
+
+</body>
+</html>

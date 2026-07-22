@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messaging Services | EveryHandle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="brand-section">
+      <a href="index.html" class="logo">EVERYHANDLE</a>
+      <span class="verified-pill">MESSAGING</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="showroom.html">Social Media</a>
+      <a href="services.html">Services</a>
+      <a href="admin.html" class="btn-admin">Admin</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <div class="showroom-hero">
+    <h1 class="showroom-hero-title">Messaging & Communication Accounts</h1>
+    <p class="showroom-hero-subtitle">Verified phone numbers & messaging accounts from 190+ countries</p>
+  </div>
+
+  <!-- FILTERS & SEARCH -->
+  <div class="showroom-filters">
+    <div class="filter-row">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search by platform, country, or number type...">
+      <select id="countryFilter" class="filter-select">
+        <option value="">All Countries</option>
+      </select>
+      <select id="platformFilter" class="filter-select">
+        <option value="">All Platforms</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PLATFORM SECTIONS -->
+  <main class="showroom-container">
+    
+    <!-- WhatsApp Section -->
+    <section class="platform-section" data-platform="whatsapp">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">💬</span>
+          <div>
+            <h2 class="platform-name">WhatsApp</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="whatsapp-listings"></div>
+    </section>
+
+    <!-- Telegram Section -->
+    <section class="platform-section" data-platform="telegram">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">✈️</span>
+          <div>
+            <h2 class="platform-name">Telegram</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="telegram-listings"></div>
+    </section>
+
+    <!-- Messenger Section -->
+    <section class="platform-section" data-platform="messenger">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">💭</span>
+          <div>
+            <h2 class="platform-name">Messenger</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="messenger-listings"></div>
+    </section>
+
+    <!-- Discord Section -->
+    <section class="platform-section" data-platform="discord">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">🎮</span>
+          <div>
+            <h2 class="platform-name">Discord</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="discord-listings"></div>
+    </section>
+
+    <!-- Signal Section -->
+    <section class="platform-section" data-platform="signal">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">🔒</span>
+          <div>
+            <h2 class="platform-name">Signal</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="signal-listings"></div>
+    </section>
+
+    <!-- WeChat Section -->
+    <section class="platform-section" data-platform="wechat">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">💚</span>
+          <div>
+            <h2 class="platform-name">WeChat</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="wechat-listings"></div>
+    </section>
+
+    <!-- Viber Section -->
+    <section class="platform-section" data-platform="viber">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">📞</span>
+          <div>
+            <h2 class="platform-name">Viber</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="viber-listings"></div>
+    </section>
+
+    <!-- LINE Section -->
+    <section class="platform-section" data-platform="line">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">💚</span>
+          <div>
+            <h2 class="platform-name">LINE</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="line-listings"></div>
+    </section>
+
+    <!-- Google Messages Section -->
+    <section class="platform-section" data-platform="google-messages">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">💬</span>
+          <div>
+            <h2 class="platform-name">Google Messages</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="google-messages-listings"></div>
+    </section>
+
+    <!-- iMessage Section -->
+    <section class="platform-section" data-platform="imessage">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">🍎</span>
+          <div>
+            <h2 class="platform-name">iMessage</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="imessage-listings"></div>
+    </section>
+
+  </main>
+
+  <!-- LOADING INDICATOR -->
+  <div class="loading-indicator" id="loadingIndicator">
+    <div class="spinner"></div>
+    <p>Loading more numbers...</p>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Complete Purchase</h2>
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="purchase-summary" id="purchaseSummary"></div>
+        <div class="payment-form">
+          <h3>Payment Details</h3>
+          <input type="text" placeholder="Card Number" class="payment-input">
+          <div class="payment-row">
+            <input type="text" placeholder="MM/YY" class="payment-input">
+            <input type="text" placeholder="CVV" class="payment-input">
+          </div>
+          <input type="text" placeholder="Cardholder Name" class="payment-input">
+          <button class="btn-pay" onclick="processPayment()">Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+    <div class="modal-content success">
+      <div class="modal-header">
+        <h2>✅ Purchase Successful!</h2>
+      </div>
+      <div class="modal-body">
+        <p class="success-message">Your account details have been sent to your email.</p>
+        <div class="account-details" id="accountDetails"></div>
+        <button class="btn-close-modal" onclick="closeSuccessModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="messaging.js"></script>
+</body>
+</html>

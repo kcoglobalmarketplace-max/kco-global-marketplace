@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video & Communication Services | EveryHandle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="brand-section">
+      <a href="index.html" class="logo">EVERYHANDLE</a>
+      <span class="verified-pill">SERVICES</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="showroom.html">Social Media</a>
+      <a href="messaging.html">Messaging</a>
+      <a href="admin.html" class="btn-admin">Admin</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <div class="showroom-hero">
+    <h1 class="showroom-hero-title">Video & Communication Services</h1>
+    <p class="showroom-hero-subtitle">Premium video calling, voice calling, voice cloning & live streaming services</p>
+  </div>
+
+  <!-- FILTERS & SEARCH -->
+  <div class="showroom-filters">
+    <div class="filter-row">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search services...">
+      <select id="categoryFilter" class="filter-select">
+        <option value="">All Categories</option>
+        <option value="video-calling">Video Calling</option>
+        <option value="voice-calling">Voice Calling</option>
+        <option value="voice-cloning">Voice Cloning</option>
+        <option value="live-streaming">Live Streaming</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- SERVICE CATEGORIES -->
+  <main class="showroom-container">
+    
+    <!-- Video Calling Services -->
+    <section class="platform-section" data-category="video-calling">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">📹</span>
+          <div>
+            <h2 class="platform-name">Video Calling Services</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="video-calling-listings"></div>
+    </section>
+
+    <!-- Voice Calling Services -->
+    <section class="platform-section" data-category="voice-calling">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">📞</span>
+          <div>
+            <h2 class="platform-name">Voice Calling Services</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="voice-calling-listings"></div>
+    </section>
+
+    <!-- Voice Cloning Services -->
+    <section class="platform-section" data-category="voice-cloning">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">🎙️</span>
+          <div>
+            <h2 class="platform-name">Voice Cloning Services</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="voice-cloning-listings"></div>
+    </section>
+
+    <!-- Live Streaming Services -->
+    <section class="platform-section" data-category="live-streaming">
+      <div class="platform-header">
+        <div class="platform-info">
+          <span class="platform-icon">📺</span>
+          <div>
+            <h2 class="platform-name">Live Streaming Services</h2>
+            <p class="platform-count">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="listings-row" id="live-streaming-listings"></div>
+    </section>
+
+  </main>
+
+  <!-- LOADING INDICATOR -->
+  <div class="loading-indicator" id="loadingIndicator">
+    <div class="spinner"></div>
+    <p>Loading more services...</p>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Complete Purchase</h2>
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="purchase-summary" id="purchaseSummary"></div>
+        <div class="payment-form">
+          <h3>Payment Details</h3>
+          <input type="text" placeholder="Card Number" class="payment-input">
+          <div class="payment-row">
+            <input type="text" placeholder="MM/YY" class="payment-input">
+            <input type="text" placeholder="CVV" class="payment-input">
+          </div>
+          <input type="text" placeholder="Cardholder Name" class="payment-input">
+          <button class="btn-pay" onclick="processPayment()">Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+    <div class="modal-content success">
+      <div class="modal-header">
+        <h2>✅ Purchase Successful!</h2>
+      </div>
+      <div class="modal-body">
+        <p class="success-message">Your service details have been sent to your email.</p>
+        <div class="account-details" id="accountDetails"></div>
+        <button class="btn-close-modal" onclick="closeSuccessModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="services.js"></script>
+</body>
+</html>
